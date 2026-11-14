@@ -99,3 +99,14 @@
 ## 結論
 
 需修正。未關閉缺陷 3 則（CR-01、CR-02、CR-03），建議 2 則（CR-04、CR-05），沒有另計備註則數。CR-04 維持建議：閘門仍在，未設定時載入並警告，不視為遠端任意程式碼已經沒有閘門。
+
+## 覆核（2026-10-28）
+
+審核者：工作區程式審核。熱點抽樣。2026-10-22 之後 `je_api_testka` 沒有改，只有文件、依賴與 CI。未執行測試。
+
+- CR-01 仍開放。`requests_wrapper/request_method.py:81-84` 與 `:115-120` 仍把 `kwargs` 寫進 INFO。
+- CR-02 仍開放。非同步 `timeout` 仍只進 `asyncio.wait_for`（`httpx_wrapper/async_httpx_method.py:80-92`）。
+- CR-03 仍開放。`soap=True` 仍遞迴並換成只有 SOAP `Content-Type` 的標頭（`request_method.py:129-133`）。
+- CR-04、CR-05 仍開放，維持建議。
+- 新發現：無。
+- 結論：需修正。未關閉缺陷 3 則，建議 2 則。
